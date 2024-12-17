@@ -77,7 +77,10 @@ class Fonnte
         $campaignName = $campaign->campaign_name;
         $sendDate = now()->toDateTimeString();
         $status = $response->status;
-        $formattedDatetime = Carbon::createFromFormat('Y-m-d\TH:i', $schedule)->format('Y-m-d H:i:s');
+        $formattedDatetime = null;
+        if($schedule){
+            $formattedDatetime = Carbon::createFromFormat('Y-m-d\TH:i', $schedule)->format('Y-m-d H:i:s');
+        }
         
         foreach ($selectedCustomerIds as $index => $id) {
             $customer = Customer::find($id);
