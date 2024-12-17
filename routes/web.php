@@ -60,8 +60,13 @@ Route::middleware([
     // Marketing
     Route::prefix('marketing')->group(function () {
         Route::get('/whatsapp', [MarketingController::class, 'whatsapp'])->name('marketing.whatsapp');
+        Route::get('whatsapp/send/{campaignId}', [MarketingController::class, 'sendCustomer'])->name('marketing.send');//go to target customer choice page
+        Route::post('/send', [MarketingController::class, 'send'])->name('send.whatsapp');
         Route::get('/leads', [MarketingController::class, 'leads'])->name('marketing.leads');
         Route::get('/analysis', [MarketingController::class, 'analysis'])->name('marketing.analysis');
+        Route::post('/save-selected-customers', [MarketingController::class, 'saveSelectedCustomers'])->name('saveSelectedCustomers');
+        Route::get('/detail/{campaignId}', [MarketingController::class, 'detailShow'])->name('marketing.detail');
+        Route::get('/history', [MarketingController::class, 'historyShow'])->name('message.history');
     });
 
     // Products

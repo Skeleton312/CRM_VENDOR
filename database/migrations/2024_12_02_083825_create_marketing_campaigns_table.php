@@ -17,6 +17,7 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->text('description');
+            $table->boolean('name_included')->default(false);
             $table->timestamps();
         });
     }
